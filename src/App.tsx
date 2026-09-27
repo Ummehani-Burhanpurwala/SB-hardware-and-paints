@@ -2,18 +2,19 @@ import React, { useState } from 'react';
 import { Header } from './components/Header.tsx';
 import { Hero } from './components/Hero.tsx';
 import { FeatureCardsStrip } from './components/FeatureCardsStrip.tsx';
+import { AboutSection } from './components/AboutSection.tsx';
 import { ShopByCategory } from './components/ShopByCategory.tsx';
 import { ProductsSection } from './components/ProductsSection.tsx';
 import { ColorShadesSection } from './components/ColorShadesSection.tsx';
 import { BrandsSection } from './components/BrandsSection.tsx';
-import { PaintRecommender } from './components/PaintRecommender.tsx';
-import { GallerySection } from './components/GallerySection.tsx';
 import { ServicesSection } from './components/ServicesSection.tsx';
+import { GallerySection } from './components/GallerySection.tsx';
+import { PaintRecommender } from './components/PaintRecommender.tsx';
 import { FaqSection } from './components/FaqSection.tsx';
-import { AboutSection } from './components/AboutSection.tsx';
 import { ContactSection } from './components/ContactSection.tsx';
 import { ShadeCardModal } from './components/ShadeCardModal.tsx';
 import { Footer } from './components/Footer.tsx';
+import { BottomStickyContactBar } from './components/BottomStickyContactBar.tsx';
 
 export default function App() {
   const [activeSection, setActiveSection] = useState<string>('home');
@@ -55,13 +56,13 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-white text-slate-900 flex flex-col font-sans selection:bg-orange-200 selection:text-orange-950">
+    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans selection:bg-orange-200 selection:text-orange-950 pb-16 sm:pb-20">
       
-      {/* Top Header matching reference */}
+      {/* Top Header with SB Hardware & Paints brand, rainbow spectrum bar & quick actions */}
       <Header onNavigate={handleNavigate} activeSection={activeSection} />
 
       <main className="flex-1">
-        {/* Hero Section matching Screenshot 2 */}
+        {/* 1. Home / Hero: Paint visuals, tagline, Call/WhatsApp/Get Quote CTAs, featured brands & services */}
         <div id="home">
           <Hero
             onNavigate={handleNavigate}
@@ -69,48 +70,48 @@ export default function App() {
           />
         </div>
 
-        {/* 4 Feature Cards Strip matching Screenshot 3 */}
+        {/* 2. Four Pillars Feature Cards Strip */}
         <FeatureCardsStrip />
 
-        {/* Shop by Category matching Screenshot 3 */}
+        {/* 3. About Us: Trusted local store serving homeowners, painters, contractors and builders */}
+        <AboutSection />
+
+        {/* 4. Shop by Category */}
         <ShopByCategory
           selectedCategory={selectedCategory}
           onSelectCategory={handleSelectCategory}
           onViewAll={() => handleSelectCategory('all')}
         />
 
-        {/* Bestsellers & Product Catalogue matching Screenshot 3 */}
+        {/* 5. Products: Interior/exterior paints, distemper, primer, putty, enamels, waterproofing, tools */}
         <ProductsSection
           selectedCategory={selectedCategory}
           onSelectCategory={setSelectedCategory}
           onSelectProductForInquiry={handleProductInquiry}
         />
 
-        {/* Explore Paint Color Shades & Live Wall Visualizer */}
+        {/* 6. Color Shades & Live Architectural Wall Visualizer */}
         <ColorShadesSection onInquireShade={handleShadeInquiry} />
 
-        {/* Authorized Brands & Shade Cards */}
+        {/* 7. Brands: Indigo, Asian Paints, Shalimar, Astral, Raj Yog; clicking opens shade cards */}
         <BrandsSection onOpenBrandShades={handleOpenBrandShades} />
 
-        {/* AI Surface Advice & Recommender */}
-        <PaintRecommender onNavigateToContact={() => handleNavigate('contact')} />
-
-        {/* Inspiration Gallery */}
-        <GallerySection />
-
-        {/* Store Services */}
+        {/* 8. Services: Expert guidance, home delivery, quality painters, quotation support */}
         <ServicesSection
           onNavigateToAdvice={() => handleNavigate('advice')}
           onNavigateToContact={() => handleNavigate('contact')}
         />
 
-        {/* FAQs */}
+        {/* 9. Projects & Inspiration Gallery */}
+        <GallerySection />
+
+        {/* 10. Get Expert Advice: AI-style paint recommendation interface */}
+        <PaintRecommender onNavigateToContact={() => handleNavigate('contact')} />
+
+        {/* 11. Frequently Asked Questions */}
         <FaqSection />
 
-        {/* About Us Story */}
-        <AboutSection />
-
-        {/* Get in Touch with SB Hardware & Paints */}
+        {/* 12. Contact: +91 9890722385, hakimaadamji786110@gmail.com, Pulgaon Station Chowk, hours, CTAs */}
         <ContactSection initialSubject={inquirySubject} />
       </main>
 
@@ -120,7 +121,10 @@ export default function App() {
         onOpenBrandShades={handleOpenBrandShades}
       />
 
-      {/* Interactive Shade Card Modal */}
+      {/* Prominent Sticky Bottom Contact Bar highlighting Call, WhatsApp, Get Directions */}
+      <BottomStickyContactBar onOpenQuote={() => handleNavigate('contact')} />
+
+      {/* Interactive Official Brand Shade Card Modal */}
       {activeShadeBrandId && (
         <ShadeCardModal
           brandId={activeShadeBrandId}
