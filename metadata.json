@@ -1,0 +1,6 @@
+{
+  "name": "SB Hardware & Paints",
+  "description": "Trusted paint & hardware retailer in Pulgaon owned by Mr. Hakimuddin Saifuddin Bohra. Official dealer for Indigo, Asian Paints, Shalimar, Astral, and Raj Yog.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
