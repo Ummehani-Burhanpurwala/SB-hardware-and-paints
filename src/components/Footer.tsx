@@ -45,6 +45,14 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBrandShades })
                 <Clock className="w-3.5 h-3.5 text-stone-500" />
                 <span>{STORE_DETAILS.hours}</span>
               </div>
+              <div>
+                <button
+                  onClick={() => onNavigate('contact')}
+                  className="inline-flex items-center gap-1.5 text-orange-400 hover:text-orange-300 font-bold pt-1 cursor-pointer"
+                >
+                  <span>Get in Touch & Register Account →</span>
+                </button>
+              </div>
             </div>
           </div>
 

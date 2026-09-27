@@ -15,8 +15,18 @@ import { ContactSection } from './components/ContactSection.tsx';
 import { ShadeCardModal } from './components/ShadeCardModal.tsx';
 import { Footer } from './components/Footer.tsx';
 import { BottomStickyContactBar } from './components/BottomStickyContactBar.tsx';
+import { AuthModal } from './components/AuthModal.tsx';
+import { AuthProvider } from './context/AuthContext.tsx';
 
 export default function App() {
+  return (
+    <AuthProvider>
+      <MainApp />
+    </AuthProvider>
+  );
+}
+
+function MainApp() {
   const [activeSection, setActiveSection] = useState<string>('home');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [activeShadeBrandId, setActiveShadeBrandId] = useState<string | null>(null);
@@ -123,6 +133,9 @@ export default function App() {
 
       {/* Prominent Sticky Bottom Contact Bar highlighting Call, WhatsApp, Get Directions */}
       <BottomStickyContactBar onOpenQuote={() => handleNavigate('contact')} />
+
+      {/* Firebase Authentication Modal */}
+      <AuthModal />
 
       {/* Interactive Official Brand Shade Card Modal */}
       {activeShadeBrandId && (

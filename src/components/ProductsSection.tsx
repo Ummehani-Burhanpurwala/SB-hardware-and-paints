@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { PRODUCTS_DATA, ProductItem } from '../data/storeData.ts';
-import { Star, ArrowRight, Check, X, ShieldCheck, Sparkles, Layers } from 'lucide-react';
+import { Star, ArrowRight, Check, X, ShieldCheck, Sparkles, Layers, MessageCircle, Lock, Phone } from 'lucide-react';
+import { useAuth } from '../context/AuthContext.tsx';
 
 interface ProductsSectionProps {
   selectedCategory: string;
@@ -14,6 +15,7 @@ export const ProductsSection: React.FC<ProductsSectionProps> = ({
   onSelectProductForInquiry,
 }) => {
   const [activeModalProduct, setActiveModalProduct] = useState<ProductItem | null>(null);
+  const { user, isAuthenticated, requireAuth } = useAuth();
 
   const categories = [
     { id: 'all', label: 'All Products' },
@@ -39,16 +41,35 @@ export const ProductsSection: React.FC<ProductsSectionProps> = ({
         return p.category === selectedCategory;
       });
 
+  const handleWhatsAppInquiry = (product: ProductItem) => {
+    if (!isAuthenticated) {
+      requireAuth(`Inquire on WhatsApp for ${product.name} (${product.brand})`);
+      onSelectProductForInquiry(product.name);
+      return;
+    }
+
+    // Direct WhatsApp with user details
+    const text = encodeURIComponent(
+      `Hello SB Hardware & Paints, my name is ${user?.name || 'Customer'}. I am interested in ${product.name} (${product.brand}). Please share current pricing and availability in Pulgaon.`
+    );
+    window.open(`https://wa.me/919890722385?text=${text}`, '_blank');
+  };
+
   const handleInquireFromModal = (prod: ProductItem) => {
     setActiveModalProduct(null);
-    onSelectProductForInquiry(prod.name);
+    if (!isAuthenticated) {
+      requireAuth(`Quotation for ${prod.name}`);
+      onSelectProductForInquiry(prod.name);
+    } else {
+      onSelectProductForInquiry(prod.name);
+    }
   };
 
   return (
     <section id="products" className="py-16 bg-white border-b border-slate-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         
-        {/* Section Header matching Screenshot 3 */}
+        {/* Section Header */}
         <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 mb-8">
           <div className="space-y-1 text-left">
             <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
@@ -59,64 +80,79 @@ export const ProductsSection: React.FC<ProductsSectionProps> = ({
             </p>
           </div>
 
-          {/* Quick Category filter buttons */}
-          <div className="flex items-center gap-1.5 overflow-x-auto max-w-full pb-1 scrollbar-none">
-            {categories.slice(0, 5).map((cat) => (
-              <button
-                key={cat.id}
-                onClick={() => onSelectCategory(cat.id)}
-                className={`px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
-                  selectedCategory === cat.id
-                    ? 'bg-orange-600 text-white'
-                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-                }`}
-              >
-                {cat.label}
-              </button>
-            ))}
+          <div className="flex items-center gap-2">
+            {!isAuthenticated && (
+              <span className="text-[11px] font-semibold text-slate-500 bg-slate-100 px-3 py-1.5 rounded-full flex items-center gap-1.5">
+                <Lock className="w-3 h-3 text-orange-500" />
+                <span>Sign up to unlock direct WhatsApp rates</span>
+              </span>
+            )}
+            <button
+              onClick={() => onSelectCategory('all')}
+              className="text-xs font-bold text-orange-600 hover:text-orange-700 flex items-center gap-1 cursor-pointer"
+            >
+              <span>View All</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
           </div>
         </div>
 
-        {/* Products Grid matching Screenshot 3 */}
+        {/* Category Pill Filters */}
+        <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-8 scrollbar-none">
+          {categories.map((cat) => (
+            <button
+              key={cat.id}
+              onClick={() => onSelectCategory(cat.id)}
+              className={`px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap transition-all cursor-pointer ${
+                selectedCategory === cat.id
+                  ? 'bg-slate-900 text-white shadow-xs'
+                  : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+              }`}
+            >
+              {cat.label}
+            </button>
+          ))}
+        </div>
+
+        {/* Product Cards Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {filteredProducts.map((product, idx) => {
-            const discounts = ['13% OFF', '11% OFF', '10% OFF', '15% OFF', '12% OFF', '14% OFF'];
-            const discount = discounts[idx % discounts.length];
+            const discounts = ['13% OFF', '11% OFF', '10% OFF', '15% OFF'];
+            const badge = discounts[idx % discounts.length];
 
             return (
               <div
                 key={product.id}
-                className="group relative bg-white rounded-2xl border border-slate-200/90 shadow-2xs hover:shadow-md transition-all flex flex-col justify-between overflow-hidden"
+                className="group bg-white rounded-3xl border border-slate-200/90 overflow-hidden shadow-2xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
               >
                 <div>
-                  {/* Top Badges */}
-                  <div className="absolute top-3 left-3 z-10 flex items-center gap-1.5">
-                    <span className="px-2 py-0.5 rounded-md bg-orange-600 text-white text-[10px] font-extrabold uppercase tracking-wide">
-                      {discount}
-                    </span>
-                    <span className="px-2 py-0.5 rounded-md bg-amber-400 text-slate-950 text-[10px] font-extrabold uppercase tracking-wide">
-                      Bestseller
-                    </span>
-                  </div>
+                  {/* Top Badges & Image */}
+                  <div className="relative aspect-square p-5 bg-gradient-to-b from-slate-50 to-white flex items-center justify-center border-b border-slate-100/80">
+                    <div className="absolute top-3 left-3 flex items-center gap-1.5 z-10">
+                      <span className="px-2 py-0.5 rounded-md bg-orange-600 text-white text-[10px] font-bold">
+                        {badge}
+                      </span>
+                      <span className="px-2 py-0.5 rounded-md bg-amber-400 text-slate-950 text-[10px] font-black uppercase tracking-wider">
+                        Bestseller
+                      </span>
+                    </div>
 
-                  {/* Product Packaging Image */}
-                  <div className="relative w-full h-56 bg-slate-50 flex items-center justify-center p-4 overflow-hidden border-b border-slate-100">
                     <img
                       src={product.image}
                       alt={product.name}
-                      className="max-h-44 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                      className="w-full h-full object-contain group-hover:scale-108 transition-transform duration-500"
                       loading="lazy"
                     />
                   </div>
 
                   {/* Product Info */}
-                  <div className="p-4 space-y-2 text-left">
-                    <div className="flex items-center justify-between text-xs">
-                      <span className="font-bold text-orange-600 uppercase tracking-wider text-[11px]">
+                  <div className="p-5 space-y-2 text-left">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[11px] font-bold uppercase tracking-wider text-orange-600">
                         {product.brand}
                       </span>
-                      <div className="flex items-center gap-1 text-amber-500 font-bold text-xs">
-                        <Star className="w-3.5 h-3.5 fill-current" />
+                      <div className="flex items-center gap-1 text-xs font-bold text-slate-800">
+                        <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
                         <span>4.9</span>
                         <span className="text-slate-400 font-normal text-[11px]">(120+)</span>
                       </div>
@@ -142,15 +178,25 @@ export const ProductsSection: React.FC<ProductsSectionProps> = ({
                   </div>
                 </div>
 
-                {/* Card Action Button */}
-                <div className="p-4 pt-0">
-                  <button
-                    onClick={() => setActiveModalProduct(product)}
-                    className="w-full inline-flex items-center justify-center gap-1.5 py-2.5 px-4 rounded-xl text-xs font-bold bg-slate-900 hover:bg-orange-600 text-white transition-colors cursor-pointer"
-                  >
-                    <span>View Details</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
+                {/* Card Action Buttons: View Details & WhatsApp Inquiry */}
+                <div className="p-4 pt-0 space-y-2">
+                  <div className="grid grid-cols-2 gap-2">
+                    <button
+                      onClick={() => setActiveModalProduct(product)}
+                      className="inline-flex items-center justify-center gap-1 py-2.5 px-2 rounded-xl text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-800 transition-colors cursor-pointer"
+                    >
+                      <span>Details</span>
+                      <ArrowRight className="w-3 h-3" />
+                    </button>
+
+                    <button
+                      onClick={() => handleWhatsAppInquiry(product)}
+                      className="inline-flex items-center justify-center gap-1 py-2.5 px-2 rounded-xl text-xs font-bold bg-[#25D366] hover:bg-[#20ba59] text-white shadow-xs transition-colors cursor-pointer"
+                    >
+                      {isAuthenticated ? <MessageCircle className="w-3.5 h-3.5 fill-white" /> : <Lock className="w-3.5 h-3.5" />}
+                      <span>{isAuthenticated ? 'WhatsApp' : 'Inquire'}</span>
+                    </button>
+                  </div>
                 </div>
               </div>
             );
@@ -188,35 +234,36 @@ export const ProductsSection: React.FC<ProductsSectionProps> = ({
             {/* Modal Body */}
             <div className="p-6 sm:p-8 space-y-6">
               <div className="grid grid-cols-1 sm:grid-cols-12 gap-6 items-center">
-                <div className="sm:col-span-5 bg-slate-50 rounded-2xl p-4 flex items-center justify-center border border-slate-100">
+                <div className="sm:col-span-5 bg-slate-50 p-4 rounded-2xl flex items-center justify-center">
                   <img
                     src={activeModalProduct.image}
                     alt={activeModalProduct.name}
-                    className="max-h-56 w-auto object-contain"
+                    className="w-48 h-48 object-contain"
                   />
                 </div>
 
                 <div className="sm:col-span-7 space-y-3 text-left">
-                  <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 leading-snug">
-                    {activeModalProduct.name}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                  <h3 className="text-xl font-bold text-slate-900">{activeModalProduct.name}</h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
                     {activeModalProduct.description}
                   </p>
 
-                  <div className="grid grid-cols-2 gap-2 pt-2 text-xs">
+                  <div className="grid grid-cols-2 gap-2.5 text-xs pt-1">
                     <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-100">
-                      <span className="text-[10px] uppercase font-bold text-slate-400 block">Finish Sheen</span>
+                      <span className="text-[10px] uppercase font-bold text-slate-400 block">Sheen Finish</span>
                       <strong className="text-slate-800 font-semibold">{activeModalProduct.finish}</strong>
                     </div>
+
                     <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-100">
-                      <span className="text-[10px] uppercase font-bold text-slate-400 block">Typical Coverage</span>
+                      <span className="text-[10px] uppercase font-bold text-slate-400 block">Available Sizes</span>
+                      <strong className="text-slate-800 font-semibold">{activeModalProduct.packSizes?.join(', ') || '1L, 4L, 10L, 20L'}</strong>
+                    </div>
+
+                    <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-100">
+                      <span className="text-[10px] uppercase font-bold text-slate-400 block">Coverage</span>
                       <strong className="text-slate-800 font-semibold">{activeModalProduct.coverage}</strong>
                     </div>
-                    <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-100">
-                      <span className="text-[10px] uppercase font-bold text-slate-400 block">Available Packs</span>
-                      <strong className="text-slate-800 font-semibold">{activeModalProduct.packSizes?.join(', ')}</strong>
-                    </div>
+
                     <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-100">
                       <span className="text-[10px] uppercase font-bold text-slate-400 block">Ideal Surface</span>
                       <strong className="text-slate-800 font-semibold">{activeModalProduct.idealFor}</strong>
@@ -248,14 +295,21 @@ export const ProductsSection: React.FC<ProductsSectionProps> = ({
               </span>
               <div className="flex items-center gap-2.5 w-full sm:w-auto">
                 <button
-                  onClick={() => handleInquireFromModal(activeModalProduct)}
-                  className="flex-1 sm:flex-none px-5 py-2.5 rounded-xl bg-orange-600 hover:bg-orange-700 text-white font-bold transition-all shadow-xs cursor-pointer text-center"
+                  onClick={() => handleWhatsAppInquiry(activeModalProduct)}
+                  className="flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white font-bold transition-all shadow-xs cursor-pointer"
                 >
-                  Inquire About This Product
+                  <MessageCircle className="w-3.5 h-3.5 fill-white" />
+                  <span>{isAuthenticated ? 'Inquire on WhatsApp' : 'Sign Up to Chat'}</span>
+                </button>
+                <button
+                  onClick={() => handleInquireFromModal(activeModalProduct)}
+                  className="flex-1 sm:flex-none px-4 py-2.5 rounded-xl bg-orange-600 hover:bg-orange-700 text-white font-bold transition-all shadow-xs cursor-pointer text-center"
+                >
+                  Request Quote
                 </button>
                 <button
                   onClick={() => setActiveModalProduct(null)}
-                  className="px-4 py-2.5 rounded-xl border border-slate-300 text-slate-700 hover:bg-slate-100 font-semibold cursor-pointer"
+                  className="px-3 py-2.5 rounded-xl border border-slate-300 text-slate-700 hover:bg-slate-100 font-semibold cursor-pointer"
                 >
                   Close
                 </button>

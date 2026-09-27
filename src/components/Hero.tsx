@@ -1,6 +1,7 @@
 import React from 'react';
-import { Phone, MessageCircle, FileText, ArrowRight, Palette, Sparkles, CheckCircle2, ShieldCheck, Truck, Users } from 'lucide-react';
+import { Phone, MessageCircle, FileText, ArrowRight, Palette, Sparkles, CheckCircle2, ShieldCheck, Truck, Users, Lock } from 'lucide-react';
 import { STORE_DETAILS, BRANDS_DATA } from '../data/storeData.ts';
+import { useAuth } from '../context/AuthContext.tsx';
 
 interface HeroProps {
   onNavigate: (sectionId: string) => void;
@@ -8,6 +9,24 @@ interface HeroProps {
 }
 
 export const Hero: React.FC<HeroProps> = ({ onNavigate, onOpenBrandShades }) => {
+  const { isAuthenticated, requireAuth } = useAuth();
+
+  const handleCallClick = (e: React.MouseEvent) => {
+    if (!isAuthenticated) {
+      e.preventDefault();
+      requireAuth('Direct Call to Store');
+      onNavigate('contact');
+    }
+  };
+
+  const handleWhatsAppClick = (e: React.MouseEvent) => {
+    if (!isAuthenticated) {
+      e.preventDefault();
+      requireAuth('Chat on WhatsApp');
+      onNavigate('contact');
+    }
+  };
+
   return (
     <section className="relative pt-6 pb-14 sm:pb-20 overflow-hidden">
       {/* Background ambient colorful glow accents */}
@@ -51,22 +70,24 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, onOpenBrandShades }) => 
             <div className="flex flex-wrap items-center gap-3 pt-2">
               {/* Call Now */}
               <a
-                href={`tel:${STORE_DETAILS.phoneRaw}`}
+                href={isAuthenticated ? `tel:${STORE_DETAILS.phoneRaw}` : '#contact'}
+                onClick={handleCallClick}
                 className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-sm font-bold bg-slate-900 hover:bg-slate-800 text-white shadow-md hover:shadow-lg transition-all cursor-pointer"
               >
-                <Phone className="w-4 h-4 text-emerald-400" />
-                <span>Call Store</span>
+                {isAuthenticated ? <Phone className="w-4 h-4 text-emerald-400" /> : <Lock className="w-4 h-4 text-orange-400" />}
+                <span>{isAuthenticated ? 'Call Store' : 'Unlock Store Call'}</span>
               </a>
 
               {/* WhatsApp Chat */}
               <a
-                href={STORE_DETAILS.whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+                href={isAuthenticated ? STORE_DETAILS.whatsappUrl : '#contact'}
+                onClick={handleWhatsAppClick}
+                target={isAuthenticated ? "_blank" : undefined}
+                rel={isAuthenticated ? "noopener noreferrer" : undefined}
                 className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-sm font-bold bg-[#25D366] hover:bg-[#20ba59] text-white shadow-md hover:shadow-lg transition-all cursor-pointer"
               >
                 <MessageCircle className="w-4 h-4 fill-white" />
-                <span>WhatsApp</span>
+                <span>{isAuthenticated ? 'WhatsApp' : 'Unlock WhatsApp'}</span>
               </a>
 
               {/* Get a Quote */}
@@ -75,7 +96,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, onOpenBrandShades }) => 
                 className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-sm font-bold bg-gradient-to-r from-orange-600 to-pink-600 hover:from-orange-700 hover:to-pink-700 text-white shadow-md hover:shadow-lg transition-all cursor-pointer"
               >
                 <FileText className="w-4 h-4" />
-                <span>Get a Quote</span>
+                <span>Get in Touch / Quote</span>
               </button>
 
               {/* Live Color Preview button */}
