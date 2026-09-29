@@ -41,10 +41,10 @@ export const AuthModal: React.FC = () => {
       if (!res.success) {
         setErrorMsg(res.error || 'Registration failed. Please try again.');
       } else {
-        // If there was a pending WhatsApp intent, launch it
+        // If there was a pending WhatsApp intent, launch it with the requested template
         if (pendingIntent && pendingIntent.toLowerCase().includes('whatsapp')) {
           const text = encodeURIComponent(
-            `Hello SB Hardware & Paints, my name is ${name}. I am getting in touch regarding ${pendingIntent}.`
+            `Hello! 👋\nI’m interested in your products/services from SB Hardware & Paints. I’d like to know more about the available paints, prices, and offers.\n\nFrom: ${name}\nRegarding: ${pendingIntent}\n\nThank you!`
           );
           window.open(`https://wa.me/919890722385?text=${text}`, '_blank');
         }
@@ -61,7 +61,7 @@ export const AuthModal: React.FC = () => {
       } else {
         if (pendingIntent && pendingIntent.toLowerCase().includes('whatsapp')) {
           const text = encodeURIComponent(
-            `Hello SB Hardware & Paints, I am getting in touch regarding ${pendingIntent}.`
+            `Hello! 👋\nI’m interested in your products/services from SB Hardware & Paints. I’d like to know more about the available paints, prices, and offers.\n\nRegarding: ${pendingIntent}\n\nThank you!`
           );
           window.open(`https://wa.me/919890722385?text=${text}`, '_blank');
         }

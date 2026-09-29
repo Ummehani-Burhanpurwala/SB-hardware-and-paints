@@ -78,9 +78,11 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ initialSubject =
     setMessage('');
   };
 
-  // WhatsApp link customized with user's details and inquiry
+  // WhatsApp link customized with user's details and exact requested template
   const customWhatsAppUrl = isAuthenticated && user
-    ? `https://wa.me/919890722385?text=Hello%20SB%20Hardware%20%26%20Paints%2C%20my%20name%20is%20${encodeURIComponent(user.name)}%20(${encodeURIComponent(user.role || 'Customer')}).%20${encodeURIComponent(pendingIntent || subject ? `I am inquiring about: ${pendingIntent || subject}` : 'I would like to inquire about paints & hardware.')}`
+    ? `https://wa.me/919890722385?text=${encodeURIComponent(
+        `Hello! 👋\nI’m interested in your products/services from SB Hardware & Paints. I’d like to know more about the available paints, prices, and offers.\n\nCustomer: ${user.name} (${user.role || 'Customer'})\nRequirement: ${pendingIntent || subject || 'General inquiry'}\n\nThank you!`
+      )}`
     : STORE_DETAILS.whatsappUrl;
 
   return (

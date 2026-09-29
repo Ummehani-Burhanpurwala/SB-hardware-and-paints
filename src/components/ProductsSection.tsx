@@ -48,9 +48,9 @@ export const ProductsSection: React.FC<ProductsSectionProps> = ({
       return;
     }
 
-    // Direct WhatsApp with user details
+    // Direct WhatsApp with user details and requested template
     const text = encodeURIComponent(
-      `Hello SB Hardware & Paints, my name is ${user?.name || 'Customer'}. I am interested in ${product.name} (${product.brand}). Please share current pricing and availability in Pulgaon.`
+      `Hello! 👋\nI’m interested in your products/services from SB Hardware & Paints. I’d like to know more about the available paints, prices, and offers.\n\nSpecifically inquiring about: ${product.name} (${product.brand})\nFrom: ${user?.name || 'Customer'}\n\nThank you!`
     );
     window.open(`https://wa.me/919890722385?text=${text}`, '_blank');
   };

@@ -1,17 +1,20 @@
 import React, { useState } from 'react';
-import { Sparkles, ArrowRight, HelpCircle, Layers, Check } from 'lucide-react';
+import { Sparkles, ArrowRight, HelpCircle, Layers, Check, Bot, MessageSquare } from 'lucide-react';
+import { ExpertChatbot } from './ExpertChatbot.tsx';
 
 interface PaintRecommenderProps {
   onNavigateToContact: () => void;
+  onSelectProductForInquiry?: (productName: string) => void;
 }
 
-export const PaintRecommender: React.FC<PaintRecommenderProps> = ({ onNavigateToContact }) => {
+export const PaintRecommender: React.FC<PaintRecommenderProps> = ({ 
+  onNavigateToContact,
+  onSelectProductForInquiry 
+}) => {
+  const [activeTab, setActiveTab] = useState<'chatbot' | 'matrix'>('chatbot');
   const [spaceType, setSpaceType] = useState<'interior' | 'exterior' | 'terrace' | 'metal_wood'>('interior');
   const [sheenPreference, setSheenPreference] = useState<'luxury' | 'premium' | 'economy'>('luxury');
   const [wallCondition, setWallCondition] = useState<'fresh' | 'repainting'>('fresh');
-
-  const [customQuestion, setCustomQuestion] = useState('');
-  const [customAdviceResponse, setCustomAdviceResponse] = useState<string | null>(null);
 
   const getSystemRecommendation = () => {
     if (spaceType === 'interior') {
@@ -91,105 +94,84 @@ export const PaintRecommender: React.FC<PaintRecommenderProps> = ({ onNavigateTo
 
   const rec = getSystemRecommendation();
 
-  const handleAskQuick = (q: string) => {
-    setCustomQuestion(q);
-    generateAnswer(q);
-  };
-
-  const generateAnswer = (q: string) => {
-    const query = q.toLowerCase();
-    if (query.includes('terrace') || query.includes('heat') || query.includes('leak') || query.includes('roof')) {
-      setCustomAdviceResponse(
-        'For roof heat and leakage: Apply 3 coats of Astral Elastomeric Membrane. High solar reflectance reduces indoor temperature while bridging cracks up to 2mm.'
-      );
-    } else if (query.includes('damp') || query.includes('seepage') || query.includes('moisture')) {
-      setCustomAdviceResponse(
-        'For wall dampness: Chip off peeling paint up to the brick/plaster, apply Astral Damp-Stop crystalline barrier, re-level with polymer putty, and seal with an alkali-resistant primer.'
-      );
-    } else if (query.includes('metal') || query.includes('grill') || query.includes('gate') || query.includes('rust')) {
-      setCustomAdviceResponse(
-        'For metal grills & gates: Remove rust thoroughly with Emery 80, apply 1 coat of Zinc Chromate Red Oxide primer, followed by 2 coats of Shalimar Superlac Hi-Gloss Enamel.'
-      );
-    } else if (query.includes('ceiling')) {
-      setCustomAdviceResponse(
-        'For ceilings: Use high-opacity Indigo Bright Ceiling White. Its dead-matt formulation prevents glare and light reflections from chandeliers or windows.'
-      );
-    } else {
-      setCustomAdviceResponse(
-        'For ideal results: Use a complete system (Putty -> Sealing Primer -> 2 Topcoats). Register in our Get in Touch section for personalized consultation.'
-      );
-    }
-  };
-
   return (
-    <section id="advice" className="py-20 bg-white/30 backdrop-blur-sm border-b border-white/40">
+    <section id="advice" className="py-20 bg-gradient-to-b from-slate-50 via-white to-slate-50 border-b border-slate-200/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto space-y-3 mb-14">
-          <span className="text-xs font-semibold uppercase tracking-wider text-blue-700 bg-white/70 px-3 py-1 rounded-full border border-white/60">
-            System Recommendation
-          </span>
-          <h2 className="text-2xl sm:text-3xl font-bold text-stone-900 tracking-tight">
-            Get Expert Paint Advice
+        <div className="text-center max-w-3xl mx-auto space-y-3 mb-10">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-100 text-orange-800 text-xs font-bold tracking-wider uppercase">
+            <Sparkles className="w-3.5 h-3.5 text-orange-600" />
+            <span>Pulgaon Paint Consultation & System Guide</span>
+          </div>
+
+          <h2 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
+            Expert Paint Advice & AI Consultant
           </h2>
-          <p className="text-sm sm:text-base text-stone-700 font-normal">
-            Select your surface conditions below to see the recommended multi-coat application system.
+
+          <p className="text-sm sm:text-base text-slate-600 font-normal">
+            Get personalized recommendations for wall preparation, dampness treatment, primer sealing, and coverage estimates directly from our paint experts.
           </p>
+
+          {/* Mode Switcher Tabs */}
+          <div className="inline-flex p-1 rounded-2xl bg-slate-100 border border-slate-200 mt-4">
+            <button
+              onClick={() => setActiveTab('chatbot')}
+              className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+                activeTab === 'chatbot'
+                  ? 'bg-white text-orange-600 shadow-xs'
+                  : 'text-slate-600 hover:text-slate-900'
+              }`}
+            >
+              <Bot className="w-4 h-4 text-orange-500" />
+              <span>Ask Paint AI Advisor (Custom Q&A)</span>
+            </button>
+
+            <button
+              onClick={() => setActiveTab('matrix')}
+              className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+                activeTab === 'matrix'
+                  ? 'bg-white text-orange-600 shadow-xs'
+                  : 'text-slate-600 hover:text-slate-900'
+              }`}
+            >
+              <Layers className="w-4 h-4 text-orange-500" />
+              <span>Multi-Coat System Matrix</span>
+            </button>
+          </div>
         </div>
 
-        {/* 2-Column Responsive Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          
-          {/* Left Column: Selectors (Col 1-5) */}
-          <div className="lg:col-span-5 bg-white/85 backdrop-blur-md rounded-3xl p-6 sm:p-7 border border-white/80 shadow-md space-y-5">
-            
-            {/* Step 1: Surface */}
-            <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-stone-600 mb-2.5">
-                1. Surface to be coated
-              </label>
-              <div className="grid grid-cols-2 gap-2">
-                {[
-                  { id: 'interior', label: 'Interior Rooms' },
-                  { id: 'exterior', label: 'Exterior Facade' },
-                  { id: 'terrace', label: 'Roof / Terrace' },
-                  { id: 'metal_wood', label: 'Grills & Wood' },
-                ].map((item) => (
-                  <button
-                    key={item.id}
-                    onClick={() => setSpaceType(item.id as any)}
-                    className={`p-3 rounded-xl text-xs sm:text-sm font-medium transition-all text-center cursor-pointer border ${
-                      spaceType === item.id
-                        ? 'bg-stone-900 text-white border-stone-900 shadow-2xs'
-                        : 'bg-white text-stone-700 border-stone-200 hover:bg-stone-50'
-                    }`}
-                  >
-                    {item.label}
-                  </button>
-                ))}
-              </div>
-            </div>
+        {/* Tab 1: AI Chatbot (Default & Custom for Project) */}
+        {activeTab === 'chatbot' && (
+          <div className="max-w-4xl mx-auto animate-in fade-in duration-300">
+            <ExpertChatbot onOpenProductModal={onSelectProductForInquiry} />
+          </div>
+        )}
 
-            {/* Step 2: Sheen (if interior) */}
-            {spaceType === 'interior' && (
+        {/* Tab 2: Interactive Multi-Coat System Matrix */}
+        {activeTab === 'matrix' && (
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start animate-in fade-in duration-300">
+            
+            {/* Left Column: Selectors */}
+            <div className="lg:col-span-5 bg-white rounded-3xl p-6 sm:p-7 border border-slate-200 shadow-sm space-y-5 text-left">
               <div>
-                <label className="block text-xs font-semibold uppercase tracking-wider text-stone-600 mb-2.5">
-                  2. Sheen & Finish Grade
+                <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2.5">
+                  1. Surface to be coated
                 </label>
-                <div className="grid grid-cols-3 gap-2">
+                <div className="grid grid-cols-2 gap-2">
                   {[
-                    { id: 'luxury', label: 'Luxury Velvet' },
-                    { id: 'premium', label: 'Premium Silk' },
-                    { id: 'economy', label: 'Matt Distemper' },
+                    { id: 'interior', label: 'Interior Rooms' },
+                    { id: 'exterior', label: 'Exterior Facade' },
+                    { id: 'terrace', label: 'Roof / Terrace' },
+                    { id: 'metal_wood', label: 'Grills & Wood' },
                   ].map((item) => (
                     <button
                       key={item.id}
-                      onClick={() => setSheenPreference(item.id as any)}
-                      className={`p-2.5 rounded-xl text-xs font-medium transition-all text-center cursor-pointer border ${
-                        sheenPreference === item.id
-                          ? 'bg-stone-900 text-white border-stone-900 shadow-2xs'
-                          : 'bg-white text-stone-700 border-stone-200 hover:bg-stone-50'
+                      onClick={() => setSpaceType(item.id as any)}
+                      className={`p-3 rounded-2xl text-xs font-bold transition-all text-left cursor-pointer border ${
+                        spaceType === item.id
+                          ? 'bg-orange-600 text-white border-orange-600 shadow-xs'
+                          : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100'
                       }`}
                     >
                       {item.label}
@@ -197,153 +179,116 @@ export const PaintRecommender: React.FC<PaintRecommenderProps> = ({ onNavigateTo
                   ))}
                 </div>
               </div>
-            )}
 
-            {/* Step 3: Wall Condition */}
-            <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-stone-600 mb-2.5">
-                3. Surface Condition
-              </label>
-              <div className="grid grid-cols-2 gap-2">
-                {[
-                  { id: 'fresh', label: 'New / Fresh Plaster' },
-                  { id: 'repainting', label: 'Repainting Old Walls' },
-                ].map((item) => (
-                  <button
-                    key={item.id}
-                    onClick={() => setWallCondition(item.id as any)}
-                    className={`p-3 rounded-xl text-xs sm:text-sm font-medium transition-all text-center cursor-pointer border ${
-                      wallCondition === item.id
-                        ? 'bg-stone-900 text-white border-stone-900 shadow-2xs'
-                        : 'bg-white text-stone-700 border-stone-200 hover:bg-stone-50'
-                    }`}
-                  >
-                    {item.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Advisory note */}
-            <div className="p-3.5 rounded-xl bg-white border border-stone-200 text-xs text-stone-600 space-y-1">
-              <span className="font-semibold text-stone-800 block">Personal Consultation:</span>
-              <p>
-                Have a specialized plaster condition or high moisture issue? Register in our Get in Touch section to receive custom advice.
-              </p>
-            </div>
-
-          </div>
-
-          {/* Right Column: Recommended System Display (Col 6-12) */}
-          <div className="lg:col-span-7 space-y-5">
-            
-            <div className="bg-white/85 backdrop-blur-md rounded-3xl p-6 sm:p-7 border border-white/80 shadow-md space-y-5">
-              
-              <div className="border-b border-stone-200 pb-3 flex items-center justify-between">
+              {spaceType === 'interior' && (
                 <div>
-                  <span className="text-[11px] font-semibold uppercase tracking-wider text-stone-500">
-                    Recommended Coating System
-                  </span>
-                  <h3 className="text-xl sm:text-2xl font-bold text-stone-900 mt-0.5">
-                    {rec.title}
-                  </h3>
+                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2.5">
+                    2. Desired Finish & Sheen
+                  </label>
+                  <div className="grid grid-cols-3 gap-2">
+                    {[
+                      { id: 'luxury', label: 'Luxury Velvet' },
+                      { id: 'premium', label: 'Soft Sheen' },
+                      { id: 'economy', label: 'Distemper' },
+                    ].map((item) => (
+                      <button
+                        key={item.id}
+                        onClick={() => setSheenPreference(item.id as any)}
+                        className={`p-2.5 rounded-2xl text-xs font-bold transition-all text-center cursor-pointer border ${
+                          sheenPreference === item.id
+                            ? 'bg-slate-900 text-white border-slate-900 shadow-xs'
+                            : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100'
+                        }`}
+                      >
+                        {item.label}
+                      </button>
+                    ))}
+                  </div>
                 </div>
-                <div className="text-right">
-                  <span className="text-xs text-stone-500 font-medium">Estimated Durability</span>
-                  <span className="text-xs sm:text-sm font-bold text-stone-800 block">{rec.lifespan}</span>
+              )}
+
+              <div>
+                <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2.5">
+                  3. Plaster Condition
+                </label>
+                <div className="grid grid-cols-2 gap-2">
+                  {[
+                    { id: 'fresh', label: 'Fresh New Plaster' },
+                    { id: 'repainting', label: 'Repainting Old Wall' },
+                  ].map((item) => (
+                    <button
+                      key={item.id}
+                      onClick={() => setWallCondition(item.id as any)}
+                      className={`p-2.5 rounded-2xl text-xs font-bold transition-all text-center cursor-pointer border ${
+                        wallCondition === item.id
+                          ? 'bg-slate-900 text-white border-slate-900 shadow-xs'
+                          : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100'
+                      }`}
+                    >
+                      {item.label}
+                    </button>
+                  ))}
                 </div>
               </div>
 
-              {/* 3 Steps */}
-              <div className="space-y-3">
-                <div className="p-3.5 rounded-xl bg-white border border-stone-200 flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-md bg-stone-100 text-stone-700 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
-                    1
-                  </div>
-                  <div>
-                    <span className="text-[10px] font-semibold uppercase tracking-wider text-stone-400">Step 1: Putty & Leveling</span>
-                    <h4 className="text-sm font-bold text-stone-900">{rec.putty}</h4>
-                  </div>
+              <div className="pt-2">
+                <button
+                  onClick={() => setActiveTab('chatbot')}
+                  className="w-full py-3 px-4 rounded-xl bg-orange-50 hover:bg-orange-100 text-orange-800 text-xs font-bold border border-orange-200 flex items-center justify-center gap-2 cursor-pointer transition-colors"
+                >
+                  <Bot className="w-4 h-4 text-orange-600" />
+                  <span>Have unique questions? Ask AI Paint Advisor</span>
+                </button>
+              </div>
+            </div>
+
+            {/* Right Column: Recommended Multi-Coat System Spec */}
+            <div className="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-md text-left space-y-6">
+              <div className="border-b border-slate-100 pb-4">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-orange-600 bg-orange-50 px-2.5 py-1 rounded-md">
+                  Recommended System
+                </span>
+                <h3 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight mt-2">
+                  {rec.title}
+                </h3>
+              </div>
+
+              <div className="space-y-4">
+                <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1">
+                  <div className="text-[11px] font-bold uppercase text-slate-500">Step 1: Surface Leveling</div>
+                  <div className="text-sm font-bold text-slate-900">{rec.putty}</div>
                 </div>
 
-                <div className="p-3.5 rounded-xl bg-white border border-stone-200 flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-md bg-stone-100 text-stone-700 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
-                    2
-                  </div>
-                  <div>
-                    <span className="text-[10px] font-semibold uppercase tracking-wider text-stone-400">Step 2: Sealing Primer</span>
-                    <h4 className="text-sm font-bold text-stone-900">{rec.primer}</h4>
-                  </div>
+                <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1">
+                  <div className="text-[11px] font-bold uppercase text-slate-500">Step 2: Undercoat Sealer</div>
+                  <div className="text-sm font-bold text-slate-900">{rec.primer}</div>
                 </div>
 
-                <div className="p-3.5 rounded-xl bg-white border border-stone-200 flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-md bg-stone-100 text-stone-700 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
-                    3
-                  </div>
-                  <div>
-                    <span className="text-[10px] font-semibold uppercase tracking-wider text-stone-400">Step 3: Topcoat Emulsion</span>
-                    <h4 className="text-sm font-bold text-stone-900">{rec.topcoat}</h4>
-                    <p className="text-xs text-stone-500 mt-0.5">Finish: {rec.sheen} · {rec.washability}</p>
-                  </div>
+                <div className="p-4 rounded-2xl bg-orange-50/70 border border-orange-200 space-y-1">
+                  <div className="text-[11px] font-bold uppercase text-orange-700">Step 3: Finish Topcoat (2 Coats)</div>
+                  <div className="text-sm font-black text-slate-900">{rec.topcoat}</div>
+                  <div className="text-xs text-orange-900 font-medium">Sheen: {rec.sheen} • {rec.lifespan}</div>
                 </div>
               </div>
 
-              {/* Pro Tip */}
-              <div className="p-3.5 rounded-xl bg-white border border-stone-200 text-xs text-stone-600 space-y-1">
-                <div className="font-semibold text-stone-800 flex items-center gap-1.5">
-                  <Sparkles className="w-3.5 h-3.5 text-stone-500" />
-                  <span>Application Guidance:</span>
-                </div>
+              <div className="p-4 rounded-2xl bg-blue-50/70 border border-blue-200 text-xs text-blue-900 space-y-1">
+                <strong>Expert Application Tip:</strong>
                 <p>{rec.expertTip}</p>
               </div>
 
-              {/* Clean Action - Route to Get in Touch (No WhatsApp button) */}
-              <div className="pt-2">
+              <div className="flex flex-col sm:flex-row items-center gap-3 pt-2">
                 <button
                   onClick={onNavigateToContact}
-                  className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-stone-900 hover:bg-stone-800 text-white font-medium text-sm transition-colors cursor-pointer"
+                  className="w-full sm:w-auto flex-1 py-3 px-5 rounded-xl bg-orange-600 hover:bg-orange-700 text-white font-bold text-xs sm:text-sm shadow-xs transition-colors cursor-pointer flex items-center justify-center gap-2"
                 >
-                  <span>Inquire Regarding This System</span>
-                  <ArrowRight className="w-4 h-4 text-stone-400" />
+                  <span>Request Material Quotation</span>
+                  <ArrowRight className="w-4 h-4" />
                 </button>
               </div>
-
-            </div>
-
-            {/* Quick Paint FAQs / Questions */}
-            <div className="bg-white/85 backdrop-blur-md rounded-3xl p-5 border border-white/80 shadow-md space-y-3">
-              <div className="flex items-center gap-2 text-xs font-semibold text-stone-700 uppercase tracking-wider">
-                <HelpCircle className="w-4 h-4 text-stone-500" />
-                <span>Quick Diagnostic Answers</span>
-              </div>
-
-              <div className="flex flex-wrap gap-1.5">
-                {[
-                  'How to prevent terrace heat & leakage?',
-                  'Stopping wall dampness near skirting',
-                  'Best paint for iron metal gates',
-                  'Which paint for glare-free ceiling?',
-                ].map((q) => (
-                  <button
-                    key={q}
-                    onClick={() => handleAskQuick(q)}
-                    className="text-xs font-medium px-2.5 py-1 rounded-lg bg-white border border-stone-200 text-stone-600 hover:text-stone-900 hover:border-stone-300 transition-colors cursor-pointer text-left"
-                  >
-                    {q}
-                  </button>
-                ))}
-              </div>
-
-              {customAdviceResponse && (
-                <div className="p-3 rounded-xl bg-white border border-stone-200 text-xs text-stone-700 mt-2">
-                  <p>{customAdviceResponse}</p>
-                </div>
-              )}
             </div>
 
           </div>
-
-        </div>
+        )}
 
       </div>
     </section>

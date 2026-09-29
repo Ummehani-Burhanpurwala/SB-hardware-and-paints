@@ -115,8 +115,11 @@ function MainApp() {
         {/* 9. Projects & Inspiration Gallery */}
         <GallerySection />
 
-        {/* 10. Get Expert Advice: AI-style paint recommendation interface */}
-        <PaintRecommender onNavigateToContact={() => handleNavigate('contact')} />
+        {/* 10. Get Expert Advice: AI paint consultation & recommendation interface */}
+        <PaintRecommender 
+          onNavigateToContact={() => handleNavigate('contact')}
+          onSelectProductForInquiry={handleProductInquiry}
+        />
 
         {/* 11. Frequently Asked Questions */}
         <FaqSection />

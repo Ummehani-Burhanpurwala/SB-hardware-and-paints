@@ -1,0 +1,525 @@
+{
+  "storeDetails": {
+    "name": "SB Hardware & Paints",
+    "owner": "Mr. Hakimuddin Saifuddin Bohra",
+    "establishedYear": 1998,
+    "experience": "25+ Years of Trust",
+    "phone": "+91 9890722385",
+    "phoneRaw": "+919890722385",
+    "email": "hakimaadamji786110@gmail.com",
+    "address": "Near Pulgaon Station Chowk, Nachangaon Road, Pulgaon, Maharashtra 442302",
+    "hours": "Monday – Saturday: 7:00 AM – 10:00 PM",
+    "whatsappDefaultMessage": "Hello! 👋\nI’m interested in your products/services from SB Hardware & Paints. I’d like to know more about the available paints, prices, and offers.\nThank you!",
+    "whatsappUrl": "https://wa.me/919890722385?text=Hello!%20%F0%9F%91%8B%0AI%E2%80%99m%20interested%20in%20your%20products%2Fservices%20from%20SB%20Hardware%20%26%20Paints.%20I%E2%80%99d%20like%20to%20know%20more%20about%20the%20available%20paints%2C%20prices%2C%20and%20offers.%0AThank%20you!",
+    "directionsUrl": "https://www.google.com/maps/search/?api=1&query=Pulgaon+Station+Chowk+Nachangaon+Road+Pulgaon+Maharashtra+442302",
+    "instagram": "https://instagram.com/sbhardwarepaints",
+    "storefrontImage": "/images/storefront_sb_paints_1790511702998.jpg",
+    "heroImage": "/images/hero_paint_store_1790511674504.jpg"
+  },
+  "hero": {
+    "badge": "Authorized Paint Dealer in Pulgaon • Est. 1998",
+    "headline": "Bring Your Walls to Life with 100% Genuine Designer Paints",
+    "subheadline": "Official distributor in Pulgaon for Indigo, Asian Paints, Shalimar, Astral Waterproofing & Raj Yog Putty. Precision computerized tinting, expert advice, and doorstep delivery.",
+    "bgImage": "/images/hero_paint_store_1790511674504.jpg",
+    "stats": [
+      { "label": "Liters Supplied", "value": "50,000+" },
+      { "label": "Homes Painted", "value": "2,500+" },
+      { "label": "Authorized Brands", "value": "5 Premium" },
+      { "label": "Customer Rating", "value": "4.9 ★" }
+    ],
+    "featureBadges": [
+      "100% Sealed Genuine Cans",
+      "Instant Computer Color Tinting",
+      "Free Site Delivery in Pulgaon",
+      "Contractor & Bulk Rates"
+    ]
+  },
+  "about": {
+    "badge": "Heritage & Quality Commitment",
+    "title": "Pulgaon’s Trusted Destination for Paints, Coatings & Surface Care",
+    "lead": "Founded by Mr. Hakimuddin Saifuddin Bohra over 25 years ago, SB Hardware & Paints has built an unmatched reputation for product authenticity, expert surface diagnosis, and fair trade pricing across Wardha district.",
+    "story": [
+      "We believe that paint is not merely a cosmetic finish—it is your home's first line of defense against monsoon water ingress, extreme summer heat, and surface wear.",
+      "As direct authorized dealers for Indigo Paints, Asian Paints, Shalimar Paints, Astral Chemicals, and Raj Yog Putty, our inventory arrives sealed straight from manufacturer depots. Every liter is guaranteed tamper-free.",
+      "With computerized tinting machinery right on the store floor, we formulate more than 10,000 designer shades within 5 minutes, ensuring seamless batch-to-batch color repeatability for projects of any scale."
+    ],
+    "ownerQuote": "A durable paint job depends 70% on surface preparation and 30% on the topcoat. We guide our customers on the complete system so their walls look stunning for years.",
+    "storefrontImage": "/images/storefront_sb_paints_1790511702998.jpg",
+    "storeInteriorImage": "/images/hero_paint_store_1790511674504.jpg",
+    "highlights": [
+      {
+        "title": "25+ Years Local Presence",
+        "description": "Serving Pulgaon Station Chowk, Nachangaon Road, and neighboring villages since 1998."
+      },
+      {
+        "title": "Depot-Direct Dealerships",
+        "description": "Authorized partner for Indigo, Asian Paints, Shalimar, Astral, and Raj Yog with zero middlemen."
+      },
+      {
+        "title": "Computerized Color Tinting",
+        "description": "High-precision automated spectrophotometer dispensing matching any digital shade card."
+      },
+      {
+        "title": "Verified Painter Network",
+        "description": "Direct referrals to trusted, insured, and skilled painting contractors in Pulgaon."
+      }
+    ]
+  },
+  "categories": [
+    {
+      "id": "interior",
+      "title": "Interior Emulsions",
+      "description": "Velvet smooth, washable, low-VOC luxury and premium paints for living rooms, bedrooms, and dining spaces.",
+      "badge": "100% Washable",
+      "productCount": "45+ Shades & Finishes",
+      "image": "/images/paint_can_interior_1790513290257.jpg",
+      "brands": ["Asian Paints Royale", "Indigo Metallic", "Apcolite"]
+    },
+    {
+      "id": "exterior",
+      "title": "Exterior Weather Shields",
+      "description": "UV-resistant, anti-algae silicone formulations built to endure scorching summer heat and heavy monsoons.",
+      "badge": "7-Year Warranty",
+      "productCount": "60+ Exterior Formulations",
+      "image": "/images/paint_can_exterior_1790513309831.jpg",
+      "brands": ["Indigo Dirtproof", "Apex Ultima", "Weather Pro"]
+    },
+    {
+      "id": "distemper",
+      "title": "Acrylic Distempers",
+      "description": "Economical, smooth-matt interior wall coatings with high opacity. Ideal for rental spaces and ceilings.",
+      "badge": "Budget Friendly",
+      "productCount": "30+ Classic Shades",
+      "image": "https://images.unsplash.com/photo-1562259949-e8e7689d7828?auto=format&fit=crop&w=800&q=80",
+      "brands": ["Shalimar No. 1", "Raj Yog Distemper", "Tractor Acrylic"]
+    },
+    {
+      "id": "putty",
+      "title": "Wall Putty & Surface Levelers",
+      "description": "Premium polymer-modified white cement putty for glass-smooth, crack-free, and water-resistant bases.",
+      "badge": "High Coverage Base",
+      "productCount": "Polymer & Coarse Putty",
+      "image": "/images/paint_waterproofing_1790513344977.jpg",
+      "brands": ["Raj Yog Polymer Putty", "Astral Skim Coat", "Birla Putty"]
+    },
+    {
+      "id": "primer",
+      "title": "Primers & Undercoats",
+      "description": "Alkali-resistant, deep-penetrating sealers that bind porous plaster and prevent moisture patchiness.",
+      "badge": "Alkali Sealer",
+      "productCount": "Interior & Exterior Primers",
+      "image": "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=800&q=80",
+      "brands": ["Indigo Acrylic Primer", "Asian Paints Decoprime", "Red Oxide"]
+    },
+    {
+      "id": "enamels",
+      "title": "Enamels for Wood & Metal",
+      "description": "Rust-proof, mirror-gloss enamel paints providing long-lasting barrier protection on grills, gates, and doors.",
+      "badge": "Mirror High Gloss",
+      "productCount": "35+ Industrial & Decorative",
+      "image": "/images/paint_can_enamel_1790513328393.jpg",
+      "brands": ["Shalimar Superlac", "Indigo PU Enamel", "Asian Paints Gloss"]
+    },
+    {
+      "id": "waterproofing",
+      "title": "Waterproofing Chemicals",
+      "description": "Elastomeric liquid membranes, damp-stop crystalline sealers, and crack bridging solutions for roofs and walls.",
+      "badge": "Leakage Defense",
+      "productCount": "Heavy Duty Membranes",
+      "image": "/images/paint_waterproofing_1790513344977.jpg",
+      "brands": ["Astral Damp-Stop", "SmartCare Damp Proof", "Bond-Tight"]
+    },
+    {
+      "id": "tools",
+      "title": "Tools, Rollers & Brushes",
+      "description": "Professional-grade roller sets, synthetic paintbrushes, masking tapes, scrapers, and emery abrasive sheets.",
+      "badge": "Master Painter Grade",
+      "productCount": "50+ Hardware Tools",
+      "image": "https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=800&q=80",
+      "brands": ["Indigo Rollers", "Gold Seal Brushes", "Emery Abrasives"]
+    }
+  ],
+  "products": [
+    {
+      "id": "prod-interior-luxury",
+      "name": "Luxury & Premium Interior Emulsions",
+      "brand": "Indigo & Asian Paints",
+      "category": "interior",
+      "categoryLabel": "Interior Paints",
+      "image": "/images/paint_can_interior_1790513290257.jpg",
+      "colorTheme": {
+        "softBg": "bg-rose-50/50",
+        "accentHex": "#E11D48",
+        "border": "border-rose-100"
+      },
+      "description": "Ultra-smooth washable paints with Teflon surface protection, stain resistance, and silky velvet finishes that elevate any living room or bedroom.",
+      "finish": "Velvet Matt / Silky Sheen / High Gloss",
+      "packSizes": ["1 L", "4 L", "10 L", "20 L"],
+      "coverage": "140 - 160 sq.ft / Litre (2 coats)",
+      "idealFor": "Living rooms, master bedrooms, dining spaces, luxury accent walls",
+      "dryingTime": "30 mins touch dry; 4 hours recoat",
+      "features": ["100% washable stains", "Anti-fungal protection", "Low odor & low VOC", "Rich deep color depth"]
+    },
+    {
+      "id": "prod-exterior-weatherproof",
+      "name": "All-Weather Exterior Siliconized Emulsions",
+      "brand": "Indigo & Asian Paints Apex",
+      "category": "exterior",
+      "categoryLabel": "Exterior Paints",
+      "image": "/images/paint_can_exterior_1790513309831.jpg",
+      "colorTheme": {
+        "softBg": "bg-sky-50/50",
+        "accentHex": "#0284C7",
+        "border": "border-sky-100"
+      },
+      "description": "Heavy-duty weather shields engineered to resist blistering heat, heavy monsoon downpours, dirt pickup, and algae growth.",
+      "finish": "Dirtproof Sheen / Crisp Matt",
+      "packSizes": ["1 L", "4 L", "10 L", "20 L"],
+      "coverage": "55 - 65 sq.ft / Litre (2 coats)",
+      "idealFor": "Exterior building facades, bungalow boundary walls, balconies",
+      "dryingTime": "4 hours between coats",
+      "features": ["Up to 7 years weather protection", "Silicone dirt-repellent", "Anti-algae & anti-fungal", "UV color fade resistant"]
+    },
+    {
+      "id": "prod-distemper-washable",
+      "name": "Acrylic Washable Distemper",
+      "brand": "Shalimar & Raj Yog",
+      "category": "distemper",
+      "categoryLabel": "Distemper",
+      "image": "https://images.unsplash.com/photo-1562259949-e8e7689d7828?auto=format&fit=crop&w=800&q=80",
+      "colorTheme": {
+        "softBg": "bg-amber-50/40",
+        "accentHex": "#D97706",
+        "border": "border-amber-100"
+      },
+      "description": "Clean, smooth wall finishes that provide opaque color coverage for rental homes, ceilings, and budget renovations.",
+      "finish": "Smooth Soft Matt",
+      "packSizes": ["2 kg", "5 kg", "10 kg", "20 kg"],
+      "coverage": "80 - 100 sq.ft / kg (2 coats)",
+      "idealFor": "Bedrooms, ceilings, budget interior makeovers, rental properties",
+      "dryingTime": "2 hours recoat",
+      "features": ["High opacity in single coat", "Pleasant soft matt look", "Quick drying", "Economical application"]
+    },
+    {
+      "id": "prod-wall-putty-polymeric",
+      "name": "White Cement Polymer Putty",
+      "brand": "Raj Yog & Astral",
+      "category": "putty",
+      "categoryLabel": "Wall Putty",
+      "image": "/images/paint_waterproofing_1790513344977.jpg",
+      "colorTheme": {
+        "softBg": "bg-slate-50",
+        "accentHex": "#475569",
+        "border": "border-slate-200"
+      },
+      "description": "Ultra-fine white cement putty modified with re-dispersible polymers for outstanding tensile adhesion and mirror-flat leveling.",
+      "finish": "Ultra-Smooth High-Brightness Base",
+      "packSizes": ["1 kg", "5 kg", "20 kg", "40 kg bags"],
+      "coverage": "16 - 20 sq.ft / kg (2 coats)",
+      "idealFor": "Plastered interior & exterior walls, ceilings, crack filling",
+      "dryingTime": "4-6 hours before sanding with emery",
+      "features": ["Water-resistant formula", "Prevents paint flaking", "Super bright white base", "Reduces paint consumption by 20%"]
+    },
+    {
+      "id": "prod-primer-alkali-sealer",
+      "name": "Alkali-Resistant Wall Primers",
+      "brand": "Indigo & Asian Paints",
+      "category": "primer",
+      "categoryLabel": "Primers",
+      "image": "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=800&q=80",
+      "colorTheme": {
+        "softBg": "bg-indigo-50/50",
+        "accentHex": "#4F46E5",
+        "border": "border-indigo-100"
+      },
+      "description": "Deep-penetrating sealing primer designed to anchor into porous masonry, block efflorescence salts, and maximize topcoat adhesion.",
+      "finish": "Matt Penetrative Sealer",
+      "packSizes": ["1 L", "4 L", "10 L", "20 L"],
+      "coverage": "120 - 150 sq.ft / Litre (1 coat)",
+      "idealFor": "Fresh cement plaster, gypsum boards, repaired patches",
+      "dryingTime": "30 mins surface dry; 4 hours overcoat",
+      "features": ["Resists lime blooming & alkali attack", "Uniform topcoat absorption", "Interior & exterior grades", "Water-thinnable"]
+    },
+    {
+      "id": "prod-enamels-hi-gloss",
+      "name": "Superlac Hi-Gloss Enamel",
+      "brand": "Shalimar & Asian Paints",
+      "category": "enamels",
+      "categoryLabel": "Enamels",
+      "image": "/images/paint_can_enamel_1790513328393.jpg",
+      "colorTheme": {
+        "softBg": "bg-emerald-50/50",
+        "accentHex": "#059669",
+        "border": "border-emerald-100"
+      },
+      "description": "Premium solvent-based synthetic enamel for lustrous, hard-wearing finishes on metal gates, window safety grills, and wooden door frames.",
+      "finish": "Deep Mirror Gloss / Satin",
+      "packSizes": ["500 ml", "1 L", "4 L", "20 L"],
+      "coverage": "90 - 110 sq.ft / Litre (2 coats)",
+      "idealFor": "Iron gates, window grills, wooden doors, machinery, railings",
+      "dryingTime": "3 hours touch dry; 18 hours hard cure",
+      "features": ["Anti-rust barrier protection", "High gloss retention", "Scratch & chip resistant", "Weatherproof exterior durability"]
+    },
+    {
+      "id": "prod-waterproofing-elastomeric",
+      "name": "Elastomeric Waterproof Coating",
+      "brand": "Astral & Asian Paints",
+      "category": "waterproofing",
+      "categoryLabel": "Waterproofing",
+      "image": "/images/paint_waterproofing_1790513344977.jpg",
+      "colorTheme": {
+        "softBg": "bg-cyan-50/50",
+        "accentHex": "#0891B2",
+        "border": "border-cyan-100"
+      },
+      "description": "Flexible liquid rubber membrane that forms a seamless, joint-free protective barrier over flat roofs, parapet walls, and terrace slabs.",
+      "finish": "Flexible Seamless Membrane",
+      "packSizes": ["1 L", "4 L", "10 L", "20 L"],
+      "coverage": "30 - 35 sq.ft / Litre (3 coats)",
+      "idealFor": "Terraces, parapets, external walls with seepage, roof slabs",
+      "dryingTime": "6 hours between coats",
+      "features": ["Bridges cracks up to 2mm", "High solar reflectance index", "Withstands standing water", "Long-term leak prevention"]
+    },
+    {
+      "id": "prod-tools-rollers-brushes",
+      "name": "Professional Painting Rollers & Brushes",
+      "brand": "Indigo & Gold Seal",
+      "category": "tools",
+      "categoryLabel": "Tools & Accessories",
+      "image": "https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=800&q=80",
+      "colorTheme": {
+        "softBg": "bg-violet-50/50",
+        "accentHex": "#7C3AED",
+        "border": "border-violet-100"
+      },
+      "description": "High-density micro-fiber rollers, precision angled bristle brushes, masking tapes, and scrapers ensuring lint-free and streak-free finish.",
+      "finish": "Contractor-Grade Hardware",
+      "packSizes": ["Rollers 9-inch", "Brushes 1-4 inch", "Masking Tapes", "Emery 80/120"],
+      "coverage": "Applicable across all paint varieties",
+      "idealFor": "Professional painters, contractors, and DIY home improvements",
+      "dryingTime": "Reusable with proper cleaning",
+      "features": ["Even paint release", "Shed-resistant fibers", "Ergonomic comfort handles", "Durable solvent-resistant core"]
+    }
+  ],
+  "gallery": [
+    {
+      "id": "gal-1",
+      "title": "Contemporary Living Room in Warm Terracotta",
+      "tag": "Interior Living",
+      "category": "living",
+      "shades": "Indigo Warm Terracotta & Almond Silk",
+      "image": "/images/project_interior_living_1790511719999.jpg",
+      "description": "Rich velvet matte focal wall complemented by soft almond perimeter tones, creating a cozy and welcoming family atmosphere."
+    },
+    {
+      "id": "gal-2",
+      "title": "Luxury Modern Villa Exterior Facade",
+      "tag": "Exterior Facade",
+      "category": "exterior",
+      "shades": "Apex Ultima Weatherproof White & Slate Grey",
+      "image": "/images/project_exterior_villa_1790511735551.jpg",
+      "description": "Architectural exterior coating designed to withstand severe monsoon downpours and hot summer sunlight with zero algae growth."
+    },
+    {
+      "id": "gal-3",
+      "title": "Master Bedroom in Velvet Teal & Gold",
+      "tag": "Master Bedroom",
+      "category": "bedroom",
+      "shades": "Asian Paints Royale Aegean Teal & Desert Ochre",
+      "image": "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1000&q=80",
+      "description": "Silky washable finish creating a restful sanctuary with subtle light reflection under warm ambient illumination."
+    },
+    {
+      "id": "gal-4",
+      "title": "Formal Dining Room in Royal Indigo",
+      "tag": "Dining Space",
+      "category": "dining",
+      "shades": "Indigo Metallic Emulsion in Royal Indigo",
+      "image": "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1000&q=80",
+      "description": "Statement jewel-toned dining walls with metallic luster reflecting crystal chandeliers and natural daylight."
+    },
+    {
+      "id": "gal-5",
+      "title": "Exterior Bungalow with Weather Shield",
+      "tag": "Exterior Protection",
+      "category": "exterior",
+      "shades": "Indigo Dirtproof Silicone Emulsion",
+      "image": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80",
+      "description": "Self-cleaning silicone technology that sheets off rainwater and dust, keeping external boundary walls fresh and clean."
+    },
+    {
+      "id": "gal-6",
+      "title": "Modern Kitchen & Breakfast Nook",
+      "tag": "Kitchen & Dining",
+      "category": "dining",
+      "shades": "Asian Paints Apcolite Washable Satin in Mint Mist",
+      "image": "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=1000&q=80",
+      "description": "Steam and moisture-resistant washable emulsion ensuring oil splatters and stains wipe away effortlessly."
+    }
+  ],
+  "brands": [
+    {
+      "id": "indigo",
+      "name": "Indigo Paints",
+      "tagline": "Innovative Coatings & Metallic Finishes",
+      "logoText": "INDIGO",
+      "badgeBg": "bg-indigo-50",
+      "badgeText": "text-indigo-900",
+      "accentHex": "#4F46E5",
+      "description": "Specialists in metallic emulsions, dirtproof & waterproof exterior topcoats, ceiling white, and tile coatings.",
+      "brandImage": "https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=600&q=80",
+      "officialResourceUrl": "https://indigopaints.com",
+      "pdfNote": "Official Indigo Shade Palette Available",
+      "shadeCount": "2,000+ Shades Available"
+    },
+    {
+      "id": "asian-paints",
+      "name": "Asian Paints",
+      "tagline": "Royale Luxury & Apex Weather Protection",
+      "logoText": "ASIAN PAINTS",
+      "badgeBg": "bg-red-50",
+      "badgeText": "text-red-900",
+      "accentHex": "#DC2626",
+      "description": "India's benchmark in architectural paints: Royale Luxury Emulsion, Apex Ultima, Apcolite Premium, and SmartCare Waterproofing.",
+      "brandImage": "https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&w=600&q=80",
+      "officialResourceUrl": "https://asianpaints.com",
+      "pdfNote": "Complete Asian Paints Colour Spectra In-Store",
+      "shadeCount": "3,500+ Shades Available"
+    },
+    {
+      "id": "shalimar",
+      "name": "Shalimar Paints",
+      "tagline": "Pioneering Indian Paint Heritage Since 1902",
+      "logoText": "SHALIMAR",
+      "badgeBg": "bg-blue-50",
+      "badgeText": "text-blue-900",
+      "accentHex": "#2563EB",
+      "description": "Time-honored quality in Superlac hi-gloss synthetic enamels for metal and wood, Weather Pro exterior emulsions, and industrial primers.",
+      "brandImage": "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=600&q=80",
+      "officialResourceUrl": "https://shalimarpaints.com",
+      "pdfNote": "Superlac Enamels Shade Guide Available",
+      "shadeCount": "1,800+ Shades Available"
+    },
+    {
+      "id": "astral",
+      "name": "Astral Paints & Adhesives",
+      "tagline": "High-Performance Waterproofing & Polymer Putty",
+      "logoText": "ASTRAL",
+      "badgeBg": "bg-cyan-50",
+      "badgeText": "text-cyan-900",
+      "accentHex": "#0891B2",
+      "description": "Specialists in elastomeric damp-proof membranes, polymer wall putty, tile adhesives, and structural waterproofing chemicals.",
+      "brandImage": "https://images.unsplash.com/photo-1541123437800-1bb1317badc2?auto=format&fit=crop&w=600&q=80",
+      "officialResourceUrl": "https://astralpaints.com",
+      "pdfNote": "Astral Waterproofing System Spec Sheet",
+      "shadeCount": "Specialized Waterproofing Systems"
+    },
+    {
+      "id": "raj-yog",
+      "name": "Raj Yog Paints & Putty",
+      "tagline": "Contractor-Trusted White Cement Putty",
+      "logoText": "RAJ YOG",
+      "badgeBg": "bg-amber-50",
+      "badgeText": "text-amber-900",
+      "accentHex": "#D97706",
+      "description": "Preferred by master painters and plastering contractors for exceptional adhesion, extra whiteness, high square-foot coverage, and silky smoothness.",
+      "brandImage": "https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=600&q=80",
+      "officialResourceUrl": "https://wa.me/919890722385?text=Hello%20SB%20Hardware%2C%20inquiry%20for%20Raj%20Yog%20Putty",
+      "pdfNote": "Authorized Wholesaler & Retailer in Pulgaon",
+      "shadeCount": "Wall Putty & Washable Distempers"
+    }
+  ],
+  "services": [
+    {
+      "id": "consultation",
+      "title": "On-Site Color & Surface Consultation",
+      "description": "We visit your bungalow, apartment, or commercial building in Pulgaon to evaluate wall moisture, plaster stability, and provide personalized shade pairings.",
+      "badge": "Free Service",
+      "image": "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      "id": "tinting",
+      "title": "Computerized Color Dispenser",
+      "description": "Automatic precision tinting machine formulating 10,000+ shades in minutes. Consistent batch-to-batch repeatability guaranteed.",
+      "badge": "Instant in 5 Mins",
+      "image": "https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      "id": "delivery",
+      "title": "Express Doorstep & Site Delivery",
+      "description": "Direct transport of heavy paint buckets, putty bags, and hardware right to your construction site or home in Pulgaon and nearby areas.",
+      "badge": "Fast Transport",
+      "image": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      "id": "painters",
+      "title": "Verified Painter & Contractor Network",
+      "description": "We connect you with vetted master painters and waterproofing contractors known for neat application, timely completion, and fair wages.",
+      "badge": "Trusted Artisans",
+      "image": "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      "id": "waterproofing",
+      "title": "Moisture & Seepage Diagnosis",
+      "description": "Technical inspection of exterior cracks, terrace dampness, and paint flaking with permanent chemical waterproofing recommendations.",
+      "badge": "Permanent Remedy",
+      "image": "https://images.unsplash.com/photo-1541123437800-1bb1317badc2?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      "id": "quotation",
+      "title": "Free Square-Foot Material Estimate",
+      "description": "Bring your floor plan or wall measurements to our counter for an itemized estimate covering putty, primer, topcoats, and tools without waste.",
+      "badge": "Transparent Cost",
+      "image": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80"
+    }
+  ],
+  "colorShades": [
+    { "name": "Warm Terracotta", "code": "SH-2104", "hex": "#C25E43", "family": "warm", "familyName": "Warm Earthy", "sheen": "Velvet Matt", "description": "Rich earthen terracotta creating a cozy, grounded sanctuary." },
+    { "name": "Spiced Saffron", "code": "SH-2401", "hex": "#EA580C", "family": "warm", "familyName": "Warm Earthy", "sheen": "Silk Sheen", "description": "Energetic celebratory orange for spirited living rooms." },
+    { "name": "Golden Marigold", "code": "SH-3209", "hex": "#F59E0B", "family": "warm", "familyName": "Warm Earthy", "sheen": "Rich Silk", "description": "Warm joyous amber-gold bringing festive sunshine indoors." },
+    { "name": "Sunset Coral", "code": "SH-2819", "hex": "#F43F5E", "family": "warm", "familyName": "Warm Earthy", "sheen": "Soft Sheen", "description": "Modern vivid coral adding youthful warmth to dining walls." },
+    { "name": "Desert Sandstone", "code": "SH-1188", "hex": "#D97706", "family": "warm", "familyName": "Warm Earthy", "sheen": "Matt", "description": "Earthy golden ochre that pairs beautifully with wood finishes." },
+    { "name": "Burnt Cinnamon", "code": "SH-2910", "hex": "#9A3412", "family": "warm", "familyName": "Warm Earthy", "sheen": "Eggshell", "description": "Deep rustic amber-brown for library and accent feature walls." },
+    { "name": "Royal Indigo Blue", "code": "SH-5012", "hex": "#1E3A8A", "family": "cool", "familyName": "Ocean Blues", "sheen": "Rich Silk", "description": "Prestigious deep ocean blue exuding grandeur and timeless calm." },
+    { "name": "Sky Breeze Blue", "code": "SH-4820", "hex": "#38BDF8", "family": "cool", "familyName": "Ocean Blues", "sheen": "Soft Sheen", "description": "Crisp open sky hue creating an airy, expansive atmosphere." },
+    { "name": "Aegean Teal", "code": "SH-5219", "hex": "#0D9488", "family": "cool", "familyName": "Ocean Blues", "sheen": "Satin", "description": "Jewel-toned Mediterranean teal for contemporary spaces." },
+    { "name": "Powder Morning Blue", "code": "SH-4102", "hex": "#93C5FD", "family": "cool", "familyName": "Ocean Blues", "sheen": "Matt", "description": "Gentle morning haze blue ideal for peaceful master bedrooms." },
+    { "name": "Deep Cobalt", "code": "SH-5804", "hex": "#2563EB", "family": "cool", "familyName": "Ocean Blues", "sheen": "High Gloss", "description": "Vivid vibrant blue bringing bold modern energy to doors and grills." },
+    { "name": "Midnight Navy", "code": "SH-5990", "hex": "#1E293B", "family": "cool", "familyName": "Ocean Blues", "sheen": "Velvet Matt", "description": "Sophisticated architectural navy for dramatic contrasts." },
+    { "name": "Forest Emerald", "code": "SH-6901", "hex": "#059669", "family": "green", "familyName": "Lush Greens", "sheen": "Soft Sheen", "description": "Lush organic emerald reflecting botanical serenity and vitality." },
+    { "name": "Eucalyptus Mist", "code": "SH-6204", "hex": "#6EE7B7", "family": "green", "familyName": "Lush Greens", "sheen": "Eggshell", "description": "Soothing sage green with gentle undertones for calm reading rooms." },
+    { "name": "Olive Grove", "code": "SH-6150", "hex": "#65A30D", "family": "green", "familyName": "Lush Greens", "sheen": "Matt", "description": "Natural Mediterranean olive green that harmonizes with stone." },
+    { "name": "Mint Meadow", "code": "SH-6320", "hex": "#A7F3D0", "family": "green", "familyName": "Lush Greens", "sheen": "Velvet", "description": "Fresh, airy pastel mint that revitalizes small compact rooms." },
+    { "name": "Deep Pine", "code": "SH-6992", "hex": "#064E3B", "family": "green", "familyName": "Lush Greens", "sheen": "High Sheen", "description": "Regal botanical evergreen for heritage doors and accents." },
+    { "name": "Plum Royale", "code": "SH-8190", "hex": "#701A75", "family": "regal", "familyName": "Regal Jewels", "sheen": "Velvet Sheen", "description": "Opulent deep amethyst providing exquisite backdrop for warm lighting." },
+    { "name": "Imperial Violet", "code": "SH-8402", "hex": "#7C3AED", "family": "regal", "familyName": "Regal Jewels", "sheen": "Rich Silk", "description": "Creative majestic violet that makes feature walls memorable." },
+    { "name": "Crimson Velvet", "code": "SH-7201", "hex": "#BE123C", "family": "regal", "familyName": "Regal Jewels", "sheen": "High Sheen", "description": "Dramatic romantic vermilion for luxury dining spaces." },
+    { "name": "Rich Wine", "code": "SH-7904", "hex": "#831843", "family": "regal", "familyName": "Regal Jewels", "sheen": "Eggshell", "description": "Sophisticated berry tone with timeless warmth and richness." },
+    { "name": "Blush Rose", "code": "SH-2041", "hex": "#F472B6", "family": "pastel", "familyName": "Pastel Light", "sheen": "Soft Sheen", "description": "Delicate blossom pink that creates gentle, uplifting rooms." },
+    { "name": "Butter Cream", "code": "SH-1010", "hex": "#FDE047", "family": "pastel", "familyName": "Pastel Light", "sheen": "Smooth Matt", "description": "Soft luminous yellow reflecting sunlight in dimly lit hallways." },
+    { "name": "Almond Silk", "code": "SH-1045", "hex": "#F3E5D8", "family": "pastel", "familyName": "Pastel Light", "sheen": "Velvet Matt", "description": "Versatile warm porcelain neutral that matches any furnishings." },
+    { "name": "Lavender Haze", "code": "SH-8102", "hex": "#C084FC", "family": "pastel", "familyName": "Pastel Light", "sheen": "Eggshell", "description": "Dreamy soft lilac bringing tranquility to study and prayer rooms." }
+  ],
+  "faqs": [
+    {
+      "question": "Are the paints and putty at SB Hardware & Paints 100% original?",
+      "answer": "Yes, absolutely. We are direct authorized dealers for Indigo Paints, Asian Paints, Shalimar, Astral, and Raj Yog Putty. Every bucket and bag comes factory-sealed directly from manufacturer company depots in Maharashtra with authentic batch barcodes."
+    },
+    {
+      "question": "Can I get exact computerized color mixing for custom shades in Pulgaon?",
+      "answer": "Yes! Our in-store computerized tinting machine can formulate more than 10,000+ shades from official Asian Paints, Indigo, and Shalimar fan decks within 5 minutes. You can also bring a sample cloth or tile and we will match the closest shade formula."
+    },
+    {
+      "question": "How can I fix persistent water seepage and damp walls before painting?",
+      "answer": "Never apply putty directly on wet walls. Scrape off the peeling layer, treat the exposed brick/plaster with Astral Damp-Stop crystalline waterproofing barrier, allow 24 hours to cure, re-level with water-resistant Raj Yog Putty, and seal with an alkali-resistant primer before applying your washable emulsion."
+    },
+    {
+      "question": "Do you offer delivery to construction sites or homes in Pulgaon?",
+      "answer": "Yes, we provide same-day or scheduled delivery for paint buckets, primer drums, and putty bags throughout Pulgaon, Nachangaon, and nearby towns. You can order directly at our counter or by messaging Mr. Hakimuddin Ji on WhatsApp."
+    },
+    {
+      "question": "How do I calculate how many liters of paint I need for my house?",
+      "answer": "As a general rule for 2 coats: 1 Liter of interior emulsion covers 120-140 sq.ft., 1 Liter of exterior emulsion covers 55-65 sq.ft., and 1 Kg of Raj Yog Putty covers 16-20 sq.ft. You can also use our AI Paint Advisor on this website or bring your room dimensions to our shop for a free calculation!"
+    }
+  ]
+}

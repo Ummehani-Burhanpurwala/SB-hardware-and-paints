@@ -1,5 +1,6 @@
 import React from 'react';
-import { Home, Shield, Droplets, Layers, Brush, Hammer, Palette, ArrowRight } from 'lucide-react';
+import { ArrowRight, Layers, Sparkles } from 'lucide-react';
+import { CATEGORIES_LIST } from '../data/storeData.ts';
 
 interface ShopByCategoryProps {
   selectedCategory: string;
@@ -12,74 +13,88 @@ export const ShopByCategory: React.FC<ShopByCategoryProps> = ({
   onSelectCategory,
   onViewAll,
 }) => {
-  const categories = [
-    { id: 'interior', name: 'Interior Paints', icon: Home },
-    { id: 'exterior', name: 'Exterior Paints', icon: Shield },
-    { id: 'primers', name: 'Primers', icon: Droplets },
-    { id: 'putty', name: 'Wall Putty', icon: Layers },
-    { id: 'wood', name: 'Wood Paint', icon: Brush },
-    { id: 'metal', name: 'Metal Paint', icon: Hammer },
-    { id: 'accessories', name: 'Accessories', icon: Palette },
-  ];
-
   return (
-    <section id="categories" className="py-16 bg-white">
+    <section id="categories" className="py-16 bg-white border-b border-slate-200/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         
-        {/* Section Header matching Screenshot 3 */}
+        {/* Section Header */}
         <div className="flex items-end justify-between mb-8">
           <div className="space-y-1 text-left">
+            <div className="inline-flex items-center gap-1.5 text-xs font-bold text-orange-600 uppercase tracking-wider">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>Explore Pulgaon Store Inventory</span>
+            </div>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
               Shop by Category
             </h2>
             <p className="text-sm text-slate-500 font-normal">
-              Find exactly what your project needs
+              Direct factory-sealed paints, primers, putty, and coatings for every surface
             </p>
           </div>
 
           <button
             onClick={onViewAll}
-            className="inline-flex items-center gap-1.5 text-sm font-bold text-orange-600 hover:text-orange-700 transition-colors cursor-pointer group"
+            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-orange-600 hover:text-orange-700 transition-colors cursor-pointer group"
           >
-            <span>View All</span>
+            <span>View All ({CATEGORIES_LIST.length})</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
 
-        {/* Categories Grid matching Screenshot 3 */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3 sm:gap-4">
-          {categories.map((cat) => {
-            const Icon = cat.icon;
+        {/* Categories Grid with Real Images from JSON */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-4 gap-4 sm:gap-6">
+          {CATEGORIES_LIST.map((cat) => {
             const isSelected = selectedCategory === cat.id;
 
             return (
               <button
                 key={cat.id}
                 onClick={() => onSelectCategory(cat.id)}
-                className={`flex flex-col items-center justify-center p-5 rounded-2xl border transition-all cursor-pointer group text-center min-h-[130px] ${
+                className={`flex flex-col rounded-2xl border overflow-hidden transition-all duration-300 cursor-pointer group text-left relative ${
                   isSelected
-                    ? 'border-orange-500 bg-orange-50/40 shadow-xs'
-                    : 'border-slate-200/90 bg-white hover:border-slate-300 hover:shadow-2xs'
+                    ? 'border-orange-500 ring-2 ring-orange-500/20 shadow-md bg-orange-50/20'
+                    : 'border-slate-200/90 bg-white hover:border-orange-300 hover:shadow-md'
                 }`}
               >
-                {/* Round icon badge */}
-                <div
-                  className={`w-12 h-12 rounded-full flex items-center justify-center mb-3 transition-colors ${
-                    isSelected
-                      ? 'bg-orange-100 text-orange-600'
-                      : 'bg-slate-100/80 text-slate-600 group-hover:bg-orange-50 group-hover:text-orange-600'
-                  }`}
-                >
-                  <Icon className="w-5 h-5 stroke-[1.8]" />
+                {/* Real Category Image Container */}
+                <div className="relative h-36 w-full overflow-hidden bg-slate-100">
+                  <img
+                    src={cat.image}
+                    alt={cat.title}
+                    className="w-full h-full object-cover group-hover:scale-106 transition-transform duration-500"
+                    loading="lazy"
+                    onError={(e) => {
+                      (e.currentTarget as HTMLImageElement).src = '/images/paint_can_interior_1790513290257.jpg';
+                    }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent" />
+                  
+                  {/* Category Badge */}
+                  <span className="absolute top-2.5 right-2.5 px-2 py-0.5 rounded-full bg-white/90 backdrop-blur-md text-[10px] font-bold text-slate-900 shadow-xs">
+                    {cat.badge}
+                  </span>
+
+                  {/* Title overlay on bottom of image */}
+                  <div className="absolute bottom-2.5 left-3 right-3 text-white">
+                    <h3 className="font-bold text-sm leading-tight drop-shadow-xs">
+                      {cat.title}
+                    </h3>
+                  </div>
                 </div>
 
-                <span
-                  className={`text-xs font-semibold tracking-tight transition-colors ${
-                    isSelected ? 'text-orange-600 font-bold' : 'text-slate-700 group-hover:text-slate-950'
-                  }`}
-                >
-                  {cat.name}
-                </span>
+                {/* Card Content */}
+                <div className="p-3.5 space-y-2 flex-1 flex flex-col justify-between">
+                  <p className="text-[11px] text-slate-600 line-clamp-2 leading-relaxed">
+                    {cat.description}
+                  </p>
+
+                  <div className="pt-1 flex items-center justify-between text-[11px] font-semibold text-orange-600 border-t border-slate-100">
+                    <span className="text-slate-400 text-[10px]">{cat.productCount}</span>
+                    <span className="flex items-center gap-0.5 group-hover:translate-x-0.5 transition-transform">
+                      Browse →
+                    </span>
+                  </div>
+                </div>
               </button>
             );
           })}
